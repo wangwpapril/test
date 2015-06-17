@@ -40,11 +40,15 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+        Uri u = uri;
+        return;
 
     }
 
     @Override
     public void onFragmentInteraction(String id) {
 
+        String tt = id;
+        return;
     }
 }
