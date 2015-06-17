@@ -1,10 +1,15 @@
-package com.example.wwang.movie;
+package com.example.wwang.movie.activity;
 
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.wwang.movie.fragment.DetailsFragment;
+import com.example.wwang.movie.fragment.ItemFragment;
+import com.example.wwang.movie.fragment.ListFragment;
+import com.example.wwang.movie.R;
 
 
 public class MainActivity extends ActionBarActivity implements ItemFragment.OnFragmentInteractionListener, DetailsFragment.OnFragmentInteractionListener, ListFragment.OnFragmentInteractionListener {

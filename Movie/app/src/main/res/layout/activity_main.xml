@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/fragment_detail"
         android:layout_weight="1"
-        android:name="com.example.wwang.movie.DetailsFragment"
+        android:name="com.example.wwang.movie.fragment.DetailsFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -23,7 +23,7 @@
         android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:name="com.example.wwang.movie.ListFragment"
+        android:name="com.example.wwang.movie.fragment.ListFragment"
         />
 
     <fragment
@@ -31,7 +31,7 @@
         android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:name="com.example.wwang.movie.ItemFragment"
+        android:name="com.example.wwang.movie.fragment.ItemFragment"
         />
 
 

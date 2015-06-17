@@ -1,4 +1,4 @@
-package com.example.wwang.movie;
+package com.example.wwang.movie.model;
 
 public class MovieDetails {
 

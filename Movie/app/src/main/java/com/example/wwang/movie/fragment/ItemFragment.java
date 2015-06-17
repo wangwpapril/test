@@ -1,4 +1,4 @@
-package com.example.wwang.movie;
+package com.example.wwang.movie.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
+import com.example.wwang.movie.R;
 import com.example.wwang.movie.dummy.DummyContent;
 
 /**
