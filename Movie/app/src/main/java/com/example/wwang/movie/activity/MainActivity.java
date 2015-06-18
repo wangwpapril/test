@@ -1,17 +1,22 @@
 package com.example.wwang.movie.activity;
 
 import android.net.Uri;
-import android.support.v4.app.FragmentManager;
+import android.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.wwang.movie.ClearEditText;
 import com.example.wwang.movie.fragment.DetailsFragment;
 import com.example.wwang.movie.fragment.ItemFragment;
 import com.example.wwang.movie.fragment.ListFragment;
 import com.example.wwang.movie.R;
+
+import java.util.Locale;
 
 
 public class MainActivity extends ActionBarActivity implements ItemFragment.OnFragmentInteractionListener, DetailsFragment.OnFragmentInteractionListener, ListFragment.OnFragmentInteractionListener {
@@ -27,6 +32,27 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
         setContentView(R.layout.activity_main);
 
 
+        manager = getFragmentManager();
+
+        ItemFragment itemFragment = (ItemFragment) manager.findFragmentById(R.id.fragment_list);
+        ClearEditText et = (ClearEditText) itemFragment.getView().findViewById(R.id.search_ed);
+        et.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                String text = editable.toString().toLowerCase(Locale.getDefault());
+            }
+        });
 
     }
 

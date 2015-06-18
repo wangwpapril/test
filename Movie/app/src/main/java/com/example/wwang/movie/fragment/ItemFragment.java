@@ -81,7 +81,7 @@ public class ItemFragment extends Fragment implements AbsListView.OnItemClickLis
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        for(int i=0; i<3;i++) {
+        for(int i=0; i<10;i++) {
             MovieItem item = new MovieItem(1, "test","","","");
             mMovieList.add(i, item );
         }
