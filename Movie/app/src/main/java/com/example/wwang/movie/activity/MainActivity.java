@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wwang.movie.utils.ClearEditText;
@@ -23,6 +24,7 @@ import com.example.wwang.movie.model.MovieItem;
 import com.example.wwang.movie.request.ControllerContentTask;
 import com.example.wwang.movie.request.Enums;
 import com.example.wwang.movie.request.IControllerContentCallback;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -186,7 +188,9 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
                     movieDetails.mPlot = mds.optString("Plot");
                     movieDetails.mPoster = mds.optString("Poster");
                     DetailsFragment detailsFragment = (DetailsFragment) manager.findFragmentById(R.id.fragment_detail);
-                    detailsFragment.getView().findViewById(R.id.details_poster);
+                    ImageView poster = (ImageView) detailsFragment.getView().findViewById(R.id.details_poster);
+                    Picasso.with(instance).load(movieDetails.getmPoster()).resize(400, 400).centerCrop().into(poster);
+
 
                     TextView title = (TextView) detailsFragment.getView().findViewById(R.id.details_title);
                     title.setText(movieDetails.getmTitle());
