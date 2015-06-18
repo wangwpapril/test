@@ -2,14 +2,14 @@ package com.example.wwang.movie.model;
 
 public class MovieItem {
 
-    public String mId;
+    public int mId;
     public String mTitle;
     public String mYear;
     public String mImdbId;
     public String mType;
 
 
-    public MovieItem(String id, String title, String year, String imdbId, String type){
+    public MovieItem(int id, String title, String year, String imdbId, String type){
         this.mId = id;
         this.mTitle = title;
         this.mYear = year;
@@ -17,7 +17,7 @@ public class MovieItem {
         this.mType = type;
     }
 
-    public String getmId() { return mId; }
+    public int getmId() { return mId; }
 
     public String getmTitle() { return mTitle; }
 

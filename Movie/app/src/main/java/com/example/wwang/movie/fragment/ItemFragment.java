@@ -13,8 +13,13 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
+import com.example.wwang.movie.MovieListAdapter;
 import com.example.wwang.movie.R;
 import com.example.wwang.movie.dummy.DummyContent;
+import com.example.wwang.movie.model.MovieItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -42,12 +47,13 @@ public class ItemFragment extends Fragment implements AbsListView.OnItemClickLis
      * The fragment's ListView/GridView.
      */
     private AbsListView mListView;
+    private List<MovieItem> mMovieList = new ArrayList<MovieItem>();
 
     /**
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
      */
-    private ListAdapter mAdapter;
+    private MovieListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
     public static ItemFragment newInstance(String param1, String param2) {
@@ -75,9 +81,12 @@ public class ItemFragment extends Fragment implements AbsListView.OnItemClickLis
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        for(int i=0; i<3;i++) {
+            MovieItem item = new MovieItem(1, "test","","","");
+            mMovieList.add(i, item );
+        }
         // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        mAdapter = new MovieListAdapter(mMovieList,getActivity());
     }
 
     @Override
