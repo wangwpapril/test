@@ -2,13 +2,13 @@ package com.example.wwang.movie.model;
 
 public class MovieDetails {
 
-    public String mId;
-    public String mTitle;
-    public String mYear;
-    public String mImdbId;
-    public String mType;
-    public String mPlot;
-    public String mPoster;
+    private String mId;
+    private String mTitle;
+    private String mYear;
+    private String mImdbId;
+    private String mType;
+    private String mPlot;
+    private String mPoster;
 
 
     public MovieDetails(){
@@ -37,4 +37,16 @@ public class MovieDetails {
     public String getmPlot() { return mPlot; }
 
     public String getmPoster() { return mPoster; }
+
+    public void setmTitle(String title) {
+        this.mTitle = title;
+    }
+
+    public void setmPlot(String plot) {
+        this.mPlot = plot;
+    }
+
+    public void setmPoster(String poster) {
+        this.mPoster = poster;
+    }
 }

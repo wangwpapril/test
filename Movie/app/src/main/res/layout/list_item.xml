@@ -3,37 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical"
-    android:background="#FFF"
-    android:padding="10dp"
+    android:background="@android:color/darker_gray"
     android:orientation="horizontal" >
-
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="false"
-        android:id="@+id/relativeLayout">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/movie_name"
             android:textSize="18sp"
-            android:textColor="#333f48"
-            android:text="Country Name"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp" />
-
-    </RelativeLayout>
-
-    <!--
-public View llBottomLine;
-llBottomLine = findViewById(R.id.category_bottom_gray_line);
- -->
+            android:textColor="@android:color/white"
+            android:text="Movie Title"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp" />
 
 </RelativeLayout>

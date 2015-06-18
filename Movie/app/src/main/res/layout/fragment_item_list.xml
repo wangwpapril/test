@@ -7,37 +7,28 @@
 
     <com.example.wwang.movie.utils.ClearEditText
         android:id="@+id/search_ed"
-        android:layout_width="fill_parent"
-        android:layout_height="50dip"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:background="#e1e1e1"
         android:cursorVisible="true"
         android:drawableLeft="@mipmap/search_icon_blue"
-        android:drawablePadding="10dip"
+        android:drawablePadding="10dp"
         android:drawableRight="@mipmap/exit"
-        android:paddingRight="20dip"
+        android:paddingRight="20dp"
         android:hint="Tap to Search"
-        android:paddingLeft="30dip"
+        android:paddingLeft="30dp"
         android:textColor="#333f48"
         android:textColorHint="#333f48"
         android:textCursorDrawable="@null"
         android:maxLines="1"
         android:imeOptions="actionDone"/>
 
-
-
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
         android:layout_below="@+id/search_ed"/>
-
-    <TextView
-        android:id="@android:id/empty"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@android:id/list"
-        android:gravity="center"
-        android:text="test"/>
 
 </RelativeLayout>

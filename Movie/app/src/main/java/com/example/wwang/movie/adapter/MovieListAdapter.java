@@ -20,24 +20,14 @@ import java.util.Locale;
 
 public class MovieListAdapter extends BaseAdapter {
 	private List<MovieItem> datas;
-    private List<MovieItem> datas_clone;
-    private Filter filter;
     protected Activity context;
-//    protected ImageLoader ImageLoader;
 
 	public MovieListAdapter(List<MovieItem> datas,
                             Activity activity) {
 		this.datas = datas;
-        this.datas_clone = datas;
 		this.context = activity;
-		init();
 	}
 
-    protected void init(){
-/*        if (ImageLoader == null) {
-            ImageLoader = new ImageLoader(context, R.drawable.empty_square);
-        }*/
-    }
 	@Override
 	public int getCount() {
 		return datas == null ? 0 : datas.size();
@@ -68,9 +58,6 @@ public class MovieListAdapter extends BaseAdapter {
 		}
 		MovieItem model = datas.get(position);
 		holder.movieName.setText(model.getmTitle());
-/*		final ImageView imageView = holder.countryIcon;
-		imageView.setTag(model.getmGeneralImage());
-		ImageLoader.DisplayImage(model.getmGeneralImage(), context, imageView);*/
 		convertView.setTag(holder);
 		return convertView;
 	}
@@ -84,80 +71,8 @@ public class MovieListAdapter extends BaseAdapter {
         return datas;
     }
 
-/*    public Filter getFilter(Activity activity)
-    {
-        if (filter == null)
-        {
-            filter = new HealthListFilter(activity, this);
-            return filter;
-        }
-
-        return filter;
-    }*/
-
     private class ViewHolder {
 		public TextView movieName;
 	}
-
-  /*  private class HealthListFilter extends Filter {
-
-        private Activity mActivity;
-        private BaseAdapter mAdapter;
-
-        public HealthListFilter(Activity activity, BaseAdapter adapter)
-        {
-            mActivity = activity;
-            mAdapter = adapter;
-        }
-
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-
-            constraint = constraint.toString().toLowerCase(Locale.getDefault());
-            FilterResults results = new FilterResults();
-
-            if (constraint != null && constraint.toString().length() > 0)
-            {
-
-                List<HealthConditionDis> filteredDatas = new ArrayList<HealthConditionDis>();
-
-                for (int i=0; i < datas_clone.size(); i++)
-                {
-                    HealthConditionDis tmpData = datas_clone.get(i);
-                    String name = tmpData.getmConditionName();
-                    name = name.toLowerCase(Locale.getDefault());
-
-                    if (name.contains(constraint))
-                        filteredDatas.add(tmpData);
-                }
-                results.count = filteredDatas.size();
-                results.values = filteredDatas;
-            }
-            else
-            {
-                datas = datas_clone;
-                synchronized (this) {
-                    results.count = datas.size();
-                    results.values = datas;
-                }
-            }
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint,
-                                      FilterResults results) {
-
-            datas = (List<HealthConditionDis>) results.values;
-            if (results.count > 0) {
-                notifyDataSetChanged();
-            } else {
-                notifyDataSetInvalidated();
-            }
-
-
-        }
-
-    }*/
 
 }

@@ -2,11 +2,11 @@ package com.example.wwang.movie.model;
 
 public class MovieItem {
 
-    public int mId;
-    public String mTitle;
-    public String mYear;
-    public String mImdbId;
-    public String mType;
+    private int mId;
+    private String mTitle;
+    private String mYear;
+    private String mImdbId;
+    private String mType;
 
     public MovieItem(){
 
@@ -29,4 +29,16 @@ public class MovieItem {
     public String getmImdbId() { return mImdbId; }
 
     public String getmType() { return mType; }
+
+    public void setmId(int id) {
+        this.mId = id;
+    }
+
+    public void setmTitle(String title) {
+        this.mTitle = title;
+    }
+
+    public void setmImdbId(String imdbId) {
+        this.mImdbId = imdbId;
+    }
 }

@@ -79,10 +79,6 @@ public class ItemFragment extends Fragment implements AbsListView.OnItemClickLis
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-/*        for(int i=0; i<10;i++) {
-            MovieItem item = new MovieItem(1, "test","","","");
-            mMovieList.add(i, item );
-        }*/
         // TODO: Change Adapter to display your content
         mAdapter = new MovieListAdapter(mMovieList,getActivity());
     }
@@ -124,7 +120,7 @@ public class ItemFragment extends Fragment implements AbsListView.OnItemClickLis
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(mAdapter.getList().get(position).mImdbId);
+            mListener.onFragmentInteraction(mAdapter.getList().get(position).getmImdbId());
         }
     }
 

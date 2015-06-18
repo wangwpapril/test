@@ -1,7 +1,9 @@
 package com.example.wwang.movie.activity;
 
+import android.content.Context;
 import android.net.Uri;
 import android.app.FragmentManager;
+import android.support.annotation.DrawableRes;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,7 +44,7 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
 
     private FragmentTransaction transaction;
 
-    private List<MovieItem> movieItemList;
+    private List<MovieItem> movieItemList = new ArrayList<MovieItem>();
 
     private MovieDetails movieDetails = new MovieDetails();
 
@@ -75,9 +78,13 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
             public void afterTextChanged(Editable editable) {
 
                 String keyWords = editable.toString().toLowerCase(Locale.getDefault());
-                if(keyWords.length() < 2)
-                    return;
+                if (keyWords.length() < 2) {
+                    movieItemList.clear();
+                    ItemFragment itemFragment = (ItemFragment) manager.findFragmentById(R.id.fragment_list);
+                    itemFragment.mAdapter.setList(movieItemList);
 
+                    return;
+                }
                 String url = "http://www.omdbapi.com/?s=" + keyWords;
 //                String url ="http://www.omdbapi.com/?s=requiem";
                 getMovieList(url);
@@ -111,7 +118,6 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-        Uri u = uri;
         return;
 
     }
@@ -129,29 +135,41 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
             public void handleSuccess(String content){
 
                 JSONObject des;
+                movieItemList.clear();
+
                 try {
                     des = new JSONObject(content);
                     if(des.has("Error")){
                         StringUtil.showAlertDialog("MovieList", des.optString("Error"), instance);
-                        return;
 
+                    }else if(des.has("Search")){
+
+                        JSONArray array = des.getJSONArray("Search");
+                        int len = array.length();
+                        for (int i = 0; i < len; i++){
+                            MovieItem item = new MovieItem();
+                            item.setmId(i);
+                            item.setmTitle(array.getJSONObject(i).optString("Title"));
+                            item.setmImdbId(array.getJSONObject(i).optString("imdbID"));
+
+                            movieItemList.add(item);
+
+                        }
                     }
 
-                    JSONArray array = des.getJSONArray("Search");
-                    int len = array.length();
-                    movieItemList = new ArrayList<MovieItem>(len);
-                    for (int i = 0; i < len; i++){
-                        MovieItem item = new MovieItem();
-                        item.mId = i;
-                        item.mTitle = array.getJSONObject(i).optString("Title");
-                        item.mImdbId = array.getJSONObject(i).optString("imdbID");
-
-                        movieItemList.add(item);
-
-                    }
 
                     ItemFragment itemFragment = (ItemFragment) manager.findFragmentById(R.id.fragment_list);
                     itemFragment.mAdapter.setList(movieItemList);
+
+                    getMovieDetails(movieItemList.get(0).getmImdbId());
+
+ //                   itemFragment.getView().findViewById(R.id.fragment_list).setSelected(true);
+
+                    InputMethodManager imm = (InputMethodManager) instance.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (imm.isActive()) {
+                        imm.hideSoftInputFromWindow(itemFragment.getView().getWindowToken(), 0);
+                    }
+
 
                 } catch (JSONException e) {
 //                    StringUtil.showAlertDialog("Trips", "Data error !", context);
@@ -184,13 +202,18 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
                 JSONObject mds;
                 try {
                     mds = new JSONObject(content);
-                    movieDetails.mTitle = mds.optString("Title");
-                    movieDetails.mPlot = mds.optString("Plot");
-                    movieDetails.mPoster = mds.optString("Poster");
+                    movieDetails.setmTitle(mds.optString("Title"));
+                    movieDetails.setmPlot(mds.optString("Plot"));
+                    movieDetails.setmPoster(mds.optString("Poster"));
                     DetailsFragment detailsFragment = (DetailsFragment) manager.findFragmentById(R.id.fragment_detail);
                     ImageView poster = (ImageView) detailsFragment.getView().findViewById(R.id.details_poster);
-                    Picasso.with(instance).load(movieDetails.getmPoster()).resize(400, 400).centerCrop().into(poster);
 
+                    if(movieDetails.getmPoster().equals("N/A") ) {
+                        poster.setImageResource(R.mipmap.poster);
+                    }else{
+                        Picasso.with(instance).load(movieDetails.getmPoster()).resize(400, 400).centerCrop().into(poster);
+
+                    }
 
                     TextView title = (TextView) detailsFragment.getView().findViewById(R.id.details_title);
                     title.setText(movieDetails.getmTitle());
