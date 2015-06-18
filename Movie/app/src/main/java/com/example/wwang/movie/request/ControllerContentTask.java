@@ -3,7 +3,7 @@ package com.example.wwang.movie.request;
 import android.os.AsyncTask;
 import android.os.Handler;
 
-import com.example.wwang.movie.Common;
+import com.example.wwang.movie.utils.Common;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;

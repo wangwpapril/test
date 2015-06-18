@@ -1,4 +1,4 @@
-package com.example.wwang.movie;
+package com.example.wwang.movie.utils;
 
 import android.content.Context;
 
@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import android.widget.EditText;
+
+import com.example.wwang.movie.R;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.example.wwang.movie;
+package com.example.wwang.movie.utils;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;

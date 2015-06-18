@@ -8,14 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
-import com.example.wwang.movie.MovieListAdapter;
+import com.example.wwang.movie.adapter.MovieListAdapter;
 import com.example.wwang.movie.R;
-import com.example.wwang.movie.dummy.DummyContent;
 import com.example.wwang.movie.model.MovieItem;
 
 import java.util.ArrayList;

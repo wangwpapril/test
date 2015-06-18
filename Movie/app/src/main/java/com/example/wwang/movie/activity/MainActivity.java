@@ -11,9 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.wwang.movie.ClearEditText;
-import com.example.wwang.movie.Common;
-import com.example.wwang.movie.StringUtil;
+import com.example.wwang.movie.utils.ClearEditText;
+import com.example.wwang.movie.utils.Common;
+import com.example.wwang.movie.utils.StringUtil;
 import com.example.wwang.movie.fragment.DetailsFragment;
 import com.example.wwang.movie.fragment.ItemFragment;
 import com.example.wwang.movie.fragment.ListFragment;

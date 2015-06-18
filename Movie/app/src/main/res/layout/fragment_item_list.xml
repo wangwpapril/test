@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     tools:context="com.example.wwang.movie.fragment.ItemFragment">
 
-    <com.example.wwang.movie.ClearEditText
+    <com.example.wwang.movie.utils.ClearEditText
         android:id="@+id/search_ed"
         android:layout_width="fill_parent"
         android:layout_height="50dip"

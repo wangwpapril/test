@@ -1,4 +1,4 @@
-package com.example.wwang.movie;
+package com.example.wwang.movie.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +22,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+
+import com.example.wwang.movie.R;
 
 
 public class StringUtil {

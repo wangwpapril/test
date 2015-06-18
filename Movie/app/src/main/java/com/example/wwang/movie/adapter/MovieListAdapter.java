@@ -1,4 +1,4 @@
-package com.example.wwang.movie;
+package com.example.wwang.movie.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.wwang.movie.R;
 import com.example.wwang.movie.model.MovieItem;
 
 import java.util.ArrayList;
