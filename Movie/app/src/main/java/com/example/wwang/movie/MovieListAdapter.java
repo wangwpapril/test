@@ -74,6 +74,15 @@ public class MovieListAdapter extends BaseAdapter {
 		return convertView;
 	}
 
+    public void setList(List<MovieItem> datas){
+        this.datas = datas;
+        notifyDataSetChanged();
+    }
+
+    public List<MovieItem> getList(){
+        return datas;
+    }
+
 /*    public Filter getFilter(Activity activity)
     {
         if (filter == null)

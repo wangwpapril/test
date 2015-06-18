@@ -53,7 +53,7 @@ public class ItemFragment extends Fragment implements AbsListView.OnItemClickLis
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
      */
-    private MovieListAdapter mAdapter;
+    public static MovieListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
     public static ItemFragment newInstance(String param1, String param2) {
@@ -81,10 +81,10 @@ public class ItemFragment extends Fragment implements AbsListView.OnItemClickLis
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        for(int i=0; i<10;i++) {
+/*        for(int i=0; i<10;i++) {
             MovieItem item = new MovieItem(1, "test","","","");
             mMovieList.add(i, item );
-        }
+        }*/
         // TODO: Change Adapter to display your content
         mAdapter = new MovieListAdapter(mMovieList,getActivity());
     }
@@ -126,7 +126,7 @@ public class ItemFragment extends Fragment implements AbsListView.OnItemClickLis
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+            mListener.onFragmentInteraction(mAdapter.getList().get(position).mImdbId);
         }
     }
 

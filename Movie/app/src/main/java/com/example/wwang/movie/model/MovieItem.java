@@ -8,6 +8,9 @@ public class MovieItem {
     public String mImdbId;
     public String mType;
 
+    public MovieItem(){
+
+    }
 
     public MovieItem(int id, String title, String year, String imdbId, String type){
         this.mId = id;

@@ -11,6 +11,9 @@ public class MovieDetails {
     public String mPoster;
 
 
+    public MovieDetails(){
+
+    }
     public MovieDetails(String id, String title, String year, String imdbId, String type, String plot, String poster){
         this.mId = id;
         this.mTitle = title;
