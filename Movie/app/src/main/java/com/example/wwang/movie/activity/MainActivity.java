@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.wwang.movie.ClearEditText;
 import com.example.wwang.movie.Common;
+import com.example.wwang.movie.StringUtil;
 import com.example.wwang.movie.fragment.DetailsFragment;
 import com.example.wwang.movie.fragment.ItemFragment;
 import com.example.wwang.movie.fragment.ListFragment;
@@ -42,11 +43,14 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
 
     private MovieDetails movieDetails = new MovieDetails();
 
+    public static MainActivity instance;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        instance = this;
         Common.context = this;
 
 
@@ -69,6 +73,9 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
             public void afterTextChanged(Editable editable) {
 
                 String keyWords = editable.toString().toLowerCase(Locale.getDefault());
+                if(keyWords.length() < 2)
+                    return;
+
                 String url = "http://www.omdbapi.com/?s=" + keyWords;
 //                String url ="http://www.omdbapi.com/?s=requiem";
                 getMovieList(url);
@@ -122,6 +129,12 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
                 JSONObject des;
                 try {
                     des = new JSONObject(content);
+                    if(des.has("Error")){
+                        StringUtil.showAlertDialog("MovieList", des.optString("Error"), instance);
+                        return;
+
+                    }
+
                     JSONArray array = des.getJSONArray("Search");
                     int len = array.length();
                     movieItemList = new ArrayList<MovieItem>(len);
@@ -198,11 +211,24 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
 
 
         ControllerContentTask cct = new ControllerContentTask(
-                "http://www.omdbapi.com/?i=tt0180093&plot=full&r=json", icc,
+                "http://www.omdbapi.com/?i="+ id +"&plot=full&r=json", icc,
                 Enums.ConnMethod.GET,false);
         String ss = null;
         cct.execute(ss);
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Common.context = this;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Common.context = null;
+    }
+
 
 }
