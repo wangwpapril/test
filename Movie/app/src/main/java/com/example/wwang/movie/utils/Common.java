@@ -46,7 +46,7 @@ public class Common {
 
 		dialogLoading.setIndeterminate(false);
 
-		dialogLoading.setCancelable(true);
+		dialogLoading.setCancelable(false);
 
 		dialogLoading.setOnDismissListener(listenerDismissLoading);
 

@@ -161,7 +161,8 @@ public class MainActivity extends ActionBarActivity implements ItemFragment.OnFr
                     ItemFragment itemFragment = (ItemFragment) manager.findFragmentById(R.id.fragment_list);
                     itemFragment.mAdapter.setList(movieItemList);
 
-                    getMovieDetails(movieItemList.get(0).getmImdbId());
+                    if(!movieItemList.isEmpty())
+                        getMovieDetails(movieItemList.get(0).getmImdbId());
 
  //                   itemFragment.getView().findViewById(R.id.fragment_list).setSelected(true);
 
